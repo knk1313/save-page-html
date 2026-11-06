@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# ワークフローの権限は、コードを読むことだけにする（リポジトリの既定が変わっても広がらないように）
+permissions:
+  contents: read
+
+# PR に続けて push したときは、前の実行を止める。main への push は止めずに最後まで確かめる
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      # manifest.json の形式と JS の構文を確かめる
+      - run: bash scripts/check.sh
