@@ -5,7 +5,7 @@
 - **Claude Code**：ルートの`CLAUDE.md`が`@AGENTS.md`で取り込む
 - **OpenAI Codex**：ルートの`AGENTS.md`を直接読み込む
 
-人間向けの一般規約（IssueやPRの出し方）は[CONTRIBUTING.md](CONTRIBUTING.md)を参照。本ファイルは、AIが**コードを書く・直す・出す**ときに踏み外してはいけない事項に絞る。
+本ファイルは、AIが**コードを書く・直す・出す**ときに踏み外してはいけない事項に絞る。
 
 ## プロジェクト概要
 
